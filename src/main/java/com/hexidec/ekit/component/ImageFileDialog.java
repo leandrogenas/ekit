@@ -107,8 +107,10 @@ public class ImageFileDialog extends JDialog implements ActionListener
 					if(imageFile != null) {
 						try {
 							BufferedImage bimg = ImageIO.read(imageFile);
-							jtxfWidth.setText(Integer.toString(bimg.getWidth()));
-							jtxfHeight.setText(Integer.toString(bimg.getHeight()));
+							if(jtxfWidth.getText().isEmpty())
+								jtxfWidth.setText(Integer.toString(bimg.getWidth()));
+							if(jtxfHeight.getText().isEmpty())
+								jtxfHeight.setText(Integer.toString(bimg.getHeight()));
 						} catch (IOException ex) {
 							System.out.println(ex.getMessage());
 						}
