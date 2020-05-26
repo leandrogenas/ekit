@@ -27,6 +27,8 @@ import java.net.URL;
 import java.util.Vector;
 import javax.swing.JApplet;
 
+import static com.hexidec.ekit.editor.Toolbar.*;
+
 /** com.hexidec.ekit.EkitApplet
   * Applet for editing and saving HTML in a Java browser com.hexidec.ekit.component
   *
@@ -83,7 +85,7 @@ public class EkitApplet extends JApplet
 		if(this.getParameter("MENUICONS") != null) { showMenuIcons = this.getParameter("MENUICONS").equalsIgnoreCase("true"); }
 		boolean spellChecker = false;
 		if(this.getParameter("SPELLCHECK") != null) { spellChecker = this.getParameter("SPELLCHECK").equalsIgnoreCase("true"); }
-		String toolbarSeq = (showToolBarMulti ? EkitCore.TOOLBAR_DEFAULT_MULTI : EkitCore.TOOLBAR_DEFAULT_SINGLE);
+		String toolbarSeq = (showToolBarMulti ? TOOLBAR_DEFAULT_MULTI : TOOLBAR_DEFAULT_SINGLE);
 		if(this.getParameter("TOOLBARSEQ") != null) { toolbarSeq = this.getParameter("TOOLBARSEQ").toUpperCase(); }
 		boolean enterBreak = false;
 		if(this.getParameter("ENTERBREAK") != null) { enterBreak = this.getParameter("ENTERBREAK").equalsIgnoreCase("true"); }

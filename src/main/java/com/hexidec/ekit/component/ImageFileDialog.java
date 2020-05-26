@@ -26,14 +26,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import java.io.IOException;
+import java.util.Optional;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 import com.hexidec.util.Translatrix;
 
@@ -49,6 +49,8 @@ public class ImageFileDialog extends JDialog implements ActionListener
 	private String imageAlt    = new String();
 	private String imageWidth  = new String();
 	private String imageHeight = new String();
+	private String mimeType    = "";
+	private boolean incorporate = false;
 
 	private JOptionPane jOptionPane;
 
@@ -56,6 +58,7 @@ public class ImageFileDialog extends JDialog implements ActionListener
 	private final JTextField jtxfAlt    = new JTextField(3);
 	private final JTextField jtxfWidth  = new JTextField(3);
 	private final JTextField jtxfHeight = new JTextField(3);
+	private final JCheckBox jchkIncorp = new JCheckBox();
 	private final JButtonNoFocus jbtnBrowse = new JButtonNoFocus("Browse");
 
 	public ImageFileDialog(Frame parent, String imgDir, String[] imgExts, String imgDesc, String imgSrc, String title, boolean bModal)
@@ -73,7 +76,8 @@ public class ImageFileDialog extends JDialog implements ActionListener
 			Translatrix.getTranslationString("ImageSrc"),    jlblSrc,    jbtnBrowse,
 			Translatrix.getTranslationString("ImageAlt"),    jtxfAlt,
 			Translatrix.getTranslationString("ImageWidth"),  jtxfWidth,
-			Translatrix.getTranslationString("ImageHeight"), jtxfHeight
+			Translatrix.getTranslationString("ImageHeight"), jtxfHeight,
+			Translatrix.getTranslationString("ImageIncorporate"), jchkIncorp
 		};
 		jOptionPane = new JOptionPane(panelContents, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null, buttonLabels, buttonLabels[0]);
 
@@ -100,20 +104,33 @@ public class ImageFileDialog extends JDialog implements ActionListener
 					{
 						return;
 					}
+					try{
+						BufferedImage bimg = ImageIO.read(imageFile);
+						jtxfWidth.setText(Integer.toString(bimg.getWidth()));
+						jtxfHeight.setText(Integer.toString(bimg.getHeight()));
+					}catch (IOException ex){
+						System.out.println(ex.getMessage());
+					}
+
 					if(value.equals(buttonLabels[0]))
 					{
 						imageSrc    = jlblSrc.getText();
 						imageAlt    = jtxfAlt.getText();
 						imageWidth  = jtxfWidth.getText();
 						imageHeight = jtxfHeight.getText();
+						incorporate = jchkIncorp.isSelected();
+						mimeType    = mimeTypeByExtension(getExtensionByString(imageFile.getName()).get());
 						setVisible(false);
 					}
 					else if(value.equals(buttonLabels[1]))
 					{
+
 						imageSrc    = "";
 						imageAlt    = "";
 						imageWidth  = "";
 						imageHeight = "";
+						incorporate = false;
+						mimeType    = "";
 						setVisible(false);
 					}
 					else
@@ -143,6 +160,7 @@ public class ImageFileDialog extends JDialog implements ActionListener
 	public String getImageAlt()    { return imageAlt; }
 	public String getImageWidth()  { return imageWidth; }
 	public String getImageHeight() { return imageHeight; }
+	public boolean getIncorporate(){ return incorporate; }
 
 	public File browseForImage()
 	{
@@ -163,4 +181,20 @@ public class ImageFileDialog extends JDialog implements ActionListener
 	{
 		return jOptionPane.getValue().toString();
 	}
+
+	public Optional<String> getExtensionByString(String filename)
+	{
+		return Optional.ofNullable(filename)
+				.filter(f -> f.contains("."))
+				.map(f -> f.substring(filename.lastIndexOf(".") + 1));
+	}
+
+	public String mimeTypeByExtension(String extension)
+	{
+		switch(extension){
+			case "jpg": return "jpeg";
+			default: return extension;
+		}
+	}
+
 }

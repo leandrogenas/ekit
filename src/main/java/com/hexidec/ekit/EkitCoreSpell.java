@@ -29,6 +29,8 @@ import com.swabunga.spell.engine.*;
 import com.swabunga.spell.event.*;
 import com.swabunga.spell.swing.*;
 
+import static com.hexidec.ekit.editor.Toolbar.*;
+
 /** com.hexidec.ekit.EkitCoreSpell
   * Extended main application class with additional spellchecking feature
   *
@@ -104,7 +106,7 @@ public class EkitCoreSpell extends EkitCore implements SpellCheckListener
 	  */
 	public EkitCoreSpell(boolean isParentApplet)
 	{
-		this(isParentApplet, null, null, null, null, null, true, false, true, true, null, null, false, false, true, false, EkitCore.TOOLBAR_DEFAULT_SINGLE, false);
+		this(isParentApplet, null, null, null, null, null, true, false, true, true, null, null, false, false, true, false, TOOLBAR_DEFAULT_SINGLE, false);
 	}
 
 	/** Empty Constructor

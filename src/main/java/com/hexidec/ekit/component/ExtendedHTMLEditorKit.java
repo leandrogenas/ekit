@@ -21,6 +21,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.hexidec.ekit.component;
 
+import com.hexidec.ekit.EkitImageView;
+
 import javax.swing.text.Document;
 import javax.swing.text.Element;
 import javax.swing.text.StyleConstants;
@@ -90,7 +92,7 @@ public class ExtendedHTMLEditorKit extends HTMLEditorKit
 				HTML.Tag tagType = (HTML.Tag)obj;
 				if(tagType == HTML.Tag.IMG)
 				{
-					return new RelativeImageView(elem);
+					return new EkitImageView(elem);
 				}
 			}
 			return super.create(elem);

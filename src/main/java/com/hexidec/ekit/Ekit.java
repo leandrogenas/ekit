@@ -29,6 +29,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import javax.swing.JFrame;
 
+import static com.hexidec.ekit.editor.Toolbar.*;
+
 /** com.hexidec.ekit.Ekit
   * App for editing and saving HTML in a Java text com.hexidec.ekit.component
   *
@@ -42,9 +44,9 @@ import javax.swing.JFrame;
 
 public class Ekit extends JFrame implements WindowListener
 {
-	private EkitCore ekitCore;
+	protected EkitCore ekitCore;
 
-	private File currentFile = (File)null;
+	protected File currentFile = (File)null;
 
 	/** Master Constructor
 	  * @param sDocument         [String]  A text or HTML document to load in the editor upon startup.
@@ -67,11 +69,11 @@ public class Ekit extends JFrame implements WindowListener
 	{
 		if(useSpellChecker)
 		{
-			ekitCore = new EkitCoreSpell(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, true, multiBar, (multiBar ? EkitCore.TOOLBAR_DEFAULT_MULTI : EkitCore.TOOLBAR_DEFAULT_SINGLE), enterBreak);
+			ekitCore = new EkitCoreSpell(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, true, multiBar, (multiBar ? TOOLBAR_DEFAULT_MULTI : TOOLBAR_DEFAULT_SINGLE), enterBreak);
 		}
 		else
 		{
-			ekitCore = new EkitCore(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, false, multiBar, (multiBar ? EkitCore.TOOLBAR_DEFAULT_MULTI : EkitCore.TOOLBAR_DEFAULT_SINGLE), enterBreak);
+			ekitCore = new EkitCore(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, false, multiBar, (multiBar ? TOOLBAR_DEFAULT_MULTI : TOOLBAR_DEFAULT_SINGLE), enterBreak);
 		}
 
 		ekitCore.setFrame(this);
@@ -148,7 +150,7 @@ public class Ekit extends JFrame implements WindowListener
 
 	/** Convenience method for updating the application title bar
 	  */
-	private void updateTitle()
+	protected void updateTitle()
 	{
 		this.setTitle(ekitCore.getAppName() + (currentFile == null ? "" : " - " + currentFile.getName()));
 	}
