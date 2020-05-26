@@ -276,7 +276,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	// File extensions for MutableFilter
 	private final String[] extsHTML = { "html", "htm", "shtml" };
 	private final String[] extsCSS  = { "css" };
-	private final String[] extsIMG  = { "gif", "jpg", "jpeg", "png" };
+	private final String[] extsIMG  = { "jpg", "jpeg", "png" };
 	private final String[] extsRTF  = { "rtf" };
 	private final String[] extsB64  = { "b64" };
 	private final String[] extsSer  = { "ser" };

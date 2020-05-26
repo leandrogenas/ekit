@@ -104,12 +104,14 @@ public class ImageFileDialog extends JDialog implements ActionListener
 					{
 						return;
 					}
-					try{
-						BufferedImage bimg = ImageIO.read(imageFile);
-						jtxfWidth.setText(Integer.toString(bimg.getWidth()));
-						jtxfHeight.setText(Integer.toString(bimg.getHeight()));
-					}catch (IOException ex){
-						System.out.println(ex.getMessage());
+					if(imageFile != null) {
+						try {
+							BufferedImage bimg = ImageIO.read(imageFile);
+							jtxfWidth.setText(Integer.toString(bimg.getWidth()));
+							jtxfHeight.setText(Integer.toString(bimg.getHeight()));
+						} catch (IOException ex) {
+							System.out.println(ex.getMessage());
+						}
 					}
 
 					if(value.equals(buttonLabels[0]))
