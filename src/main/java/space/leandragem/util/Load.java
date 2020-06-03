@@ -15,12 +15,12 @@ public class Load {
      */
     public static ImageIcon EkitIcon(String iconName)
     {
-        URL imageURL = Load.class.getResource("/com/hexidec/ekit/icons/" + iconName + "HK.png");
+        URL imageURL = Load.class.getResource("/space/leandragem/ekitten/icons/" + iconName + "HK.png");
         if(imageURL != null)
         {
             return new ImageIcon(Toolkit.getDefaultToolkit().getImage(imageURL));
         }
-        imageURL = Load.class.getResource("/com/hexidec/ekit/icons/" + iconName + "HK.gif");
+        imageURL = Load.class.getResource("/space/leandragem/ekitten/icons/" + iconName + "HK.gif");
         if(imageURL != null)
         {
             return new ImageIcon(Toolkit.getDefaultToolkit().getImage(imageURL));
