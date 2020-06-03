@@ -1,0 +1,66 @@
+package space.leandragem.ekitten.editor;
+
+public class Command {
+
+    public static final String CMD_DOC_NEW = "newdoc";
+    public static final String CMD_DOC_NEW_STYLED = "newdocstyled";
+    public static final String CMD_DOC_OPEN_HTML = "openhtml";
+    public static final String CMD_DOC_OPEN_CSS = "opencss";
+    public static final String CMD_DOC_OPEN_BASE64 = "openb64";
+    public static final String CMD_DOC_SAVE = "save";
+    public static final String CMD_DOC_SAVE_AS = "saveas";
+    public static final String CMD_DOC_SAVE_BODY = "savebody";
+    public static final String CMD_DOC_SAVE_RTF = "savertf";
+    public static final String CMD_DOC_SAVE_BASE64 = "saveb64";
+    public static final String CMD_DOC_PRINT = "print";
+    public static final String CMD_DOC_SERIALIZE_OUT = "serialize";
+    public static final String CMD_DOC_SERIALIZE_IN = "readfromser";
+    public static final String CMD_EXIT = "exit";
+    public static final String CMD_SEARCH_FIND = "find";
+    public static final String CMD_SEARCH_FIND_AGAIN = "findagain";
+    public static final String CMD_SEARCH_REPLACE = "replace";
+    public static final String CMD_CLIP_CUT = "textcut";
+    public static final String CMD_CLIP_COPY = "textcopy";
+    public static final String CMD_CLIP_PASTE = "textpaste";
+    public static final String CMD_CLIP_PASTE_PLAIN = "textpasteplain";
+    public static final String CMD_TOGGLE_TOOLBAR_SINGLE = "toggletoolbarsingle";
+    public static final String CMD_TOGGLE_TOOLBAR_MAIN   = "toggletoolbarmain";
+    public static final String CMD_TOGGLE_TOOLBAR_FORMAT = "toggletoolbarformat";
+    public static final String CMD_TOGGLE_TOOLBAR_STYLES = "toggletoolbarstyles";
+    public static final String CMD_TOGGLE_SOURCE_VIEW    = "togglesourceview";
+    public static final String CMD_TABLE_INSERT = "inserttable";
+    public static final String CMD_TABLE_EDIT = "edittable";
+    public static final String CMD_TABLE_CELL_EDIT = "editcell";
+    public static final String CMD_TABLE_ROW_INSERT = "inserttablerow";
+    public static final String CMD_TABLE_ROW_DELETE = "deletetablerow";
+    public static final String CMD_TABLE_COLUMN_INSERT = "inserttablecolumn";
+    public static final String CMD_TABLE_COLUMN_DELETE = "deletetablecolumn";
+    public static final String CMD_INSERT_BREAK = "insertbreak";
+    public static final String CMD_INSERT_NBSP = "insertnbsp";
+    public static final String CMD_INSERT_HR = "inserthr";
+    public static final String CMD_INSERT_IMAGE_LOCAL = "insertlocalimage";
+    public static final String CMD_INSERT_IMAGE_URL = "inserturlimage";
+    public static final String CMD_INSERT_UNICODE_CHAR = "insertunicodecharacter";
+    public static final String CMD_INSERT_UNICODE_MATH = "insertunicodemathematic";
+    public static final String CMD_INSERT_UNICODE_DRAW = "insertunicodedrawing";
+    public static final String CMD_INSERT_UNICODE_DING = "insertunicodedingbat";
+    public static final String CMD_INSERT_UNICODE_SIGS = "insertunicodesignifier";
+    public static final String CMD_INSERT_UNICODE_SPEC = "insertunicodespecial";
+    public static final String CMD_FORM_INSERT = "insertform";
+    public static final String CMD_FORM_TEXTFIELD = "inserttextfield";
+    public static final String CMD_FORM_TEXTAREA = "inserttextarea";
+    public static final String CMD_FORM_CHECKBOX = "insertcheckbox";
+    public static final String CMD_FORM_RADIO = "insertradiobutton";
+    public static final String CMD_FORM_PASSWORD = "insertpassword";
+    public static final String CMD_FORM_BUTTON = "insertbutton";
+    public static final String CMD_FORM_SUBMIT = "insertbuttonsubmit";
+    public static final String CMD_FORM_RESET = "insertbuttonreset";
+    public static final String CMD_ENTER_PARAGRAPH = "enterkeyparag";
+    public static final String CMD_ENTER_BREAK = "enterkeybreak";
+    public static final String CMD_SPELLCHECK = "spellcheck";
+    public static final String CMD_HELP_ABOUT = "helpabout";
+    public static final String CMD_DEBUG_DESCRIBE_DOC = "describedoc";
+    public static final String CMD_DEBUG_DESCRIBE_CSS = "describecss";
+    public static final String CMD_DEBUG_CURRENT_TAGS = "whattags";
+
+}

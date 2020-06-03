@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>leandrogenas</groupId>
+    <groupId>leandragem.space</groupId>
     <artifactId>ekitten</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>ekitten</name>
-    <description>Java WYSIWYG HTML editor, made to work as a Maven package</description>
+    <description>Simple java WYSIWYG HTML editor, made with Swing</description>
     <url>https://github.com/leandrogenas/ekitten</url>
 
     <licenses>
@@ -83,7 +83,7 @@
                 <configuration>
                     <outputDirectory>${project.basedir}/dist</outputDirectory>
                     <archive>
-                        <manifestFile>src/main/resources/ekit.manifest</manifestFile>
+                        <manifestFile>src/main/resources/ekitten.manifest</manifestFile>
                     </archive>
                 </configuration>
             </plugin>

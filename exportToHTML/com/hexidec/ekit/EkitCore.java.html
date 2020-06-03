@@ -23,7 +23,7 @@ EkitCore.java</font>
 <pre><a name="l1"><span class="ln">1    </span></a><span class="s0">package </span><span class="s1">com.hexidec.ekit;</span><span class="s2">/* 
 <a name="l2"><span class="ln">2    </span></a>GNU Lesser General Public License 
 <a name="l3"><span class="ln">3    </span></a> 
-<a name="l4"><span class="ln">4    </span></a>com.hexidec.ekit.EkitCore - Base Java Swing HTML Editor &amp; Viewer Class (Core) 
+<a name="l4"><span class="ln">4    </span></a>space.leandragem.ekitten.EkitCore - Base Java Swing HTML Editor &amp; Viewer Class (Core)
 <a name="l5"><span class="ln">5    </span></a>Copyright (C) 2000 Howard Kistler 
 <a name="l6"><span class="ln">6    </span></a> 
 <a name="l7"><span class="ln">7    </span></a>This library is free software; you can redistribute it and/or 
@@ -123,14 +123,14 @@ EkitCore.java</font>
 <a name="l101"><span class="ln">101  </span></a><span class="s0">import </span><span class="s1">javax.swing.undo.UndoManager;</span>
 <a name="l102"><span class="ln">102  </span></a><span class="s0">import </span><span class="s1">javax.swing.undo.CannotUndoException;</span>
 <a name="l103"><span class="ln">103  </span></a>
-<a name="l104"><span class="ln">104  </span></a><span class="s0">import </span><span class="s1">com.hexidec.ekit.action.*;</span>
-<a name="l105"><span class="ln">105  </span></a><span class="s0">import </span><span class="s1">com.hexidec.ekit.component.*;</span>
+<a name="l104"><span class="ln">104  </span></a><span class="s0">import </span><span class="s1">space.leandragem.ekitten.action.*;</span>
+<a name="l105"><span class="ln">105  </span></a><span class="s0">import </span><span class="s1">space.leandragem.ekitten.component.*;</span>
 <a name="l106"><span class="ln">106  </span></a><span class="s0">import </span><span class="s1">com.hexidec.util.Base64Codec;</span>
 <a name="l107"><span class="ln">107  </span></a><span class="s0">import </span><span class="s1">com.hexidec.util.Translatrix;</span>
-<a name="l108"><span class="ln">108  </span></a><span class="s0">import </span><span class="s1">com.hexidec.ekit.print.DocumentRenderer;</span>
+<a name="l108"><span class="ln">108  </span></a><span class="s0">import </span><span class="s1">space.leandragem.ekitten.print.DocumentRenderer;</span>
 <a name="l109"><span class="ln">109  </span></a>
-<a name="l110"><span class="ln">110  </span></a><span class="s2">/** com.hexidec.ekit.EkitCore</span>
-<a name="l111"><span class="ln">111  </span></a>  <span class="s2">* Main application class for editing and saving HTML in a Java text com.hexidec.ekit.component</span>
+<a name="l110"><span class="ln">110  </span></a><span class="s2">/** space.leandragem.ekitten.EkitCore</span>
+<a name="l111"><span class="ln">111  </span></a>  <span class="s2">* Main application class for editing and saving HTML in a Java text space.leandragem.ekitten.component</span>
 <a name="l112"><span class="ln">112  </span></a>  <span class="s2">*</span>
 <a name="l113"><span class="ln">113  </span></a>  <span class="s2">* </span><span class="s3">@author </span><span class="s2">Howard Kistler</span>
 <a name="l114"><span class="ln">114  </span></a>  <span class="s2">* </span><span class="s3">@version </span><span class="s2">1.1</span>
@@ -420,8 +420,8 @@ EkitCore.java</font>
 <a name="l398"><span class="ln">398  </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">showViewSource    [boolean] Specifies whether or not to show the View Source window on startup.</span>
 <a name="l399"><span class="ln">399  </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">showMenuIcons     [boolean] Specifies whether or not to show icon pictures in menus.</span>
 <a name="l400"><span class="ln">400  </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">editModeExclusive [boolean] Specifies whether or not to use exclusive edit mode (recommended on).</span>
-<a name="l401"><span class="ln">401  </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sLanguage         [String]  The language portion of the Internationalization Locale to run com.hexidec.ekit.Ekit in.</span>
-<a name="l402"><span class="ln">402  </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sCountry          [String]  The country portion of the Internationalization Locale to run com.hexidec.ekit.Ekit in.</span>
+<a name="l401"><span class="ln">401  </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sLanguage         [String]  The language portion of the Internationalization Locale to run space.leandragem.ekitten.Ekit in.</span>
+<a name="l402"><span class="ln">402  </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sCountry          [String]  The country portion of the Internationalization Locale to run space.leandragem.ekitten.Ekit in.</span>
 <a name="l403"><span class="ln">403  </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">base64            [boolean] Specifies whether the raw document is Base64 encoded or not.</span>
 <a name="l404"><span class="ln">404  </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">debugMode         [boolean] Specifies whether to show the Debug menu or not.</span>
 <a name="l405"><span class="ln">405  </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">hasSpellChecker   [boolean] Specifies whether or not this uses the SpellChecker module</span>
@@ -1228,8 +1228,8 @@ EkitCore.java</font>
 <a name="l1206"><span class="ln">1206 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">showViewSource    [boolean] Specifies whether or not to show the View Source window on startup.</span>
 <a name="l1207"><span class="ln">1207 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">showMenuIcons     [boolean] Specifies whether or not to show icon pictures in menus.</span>
 <a name="l1208"><span class="ln">1208 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">editModeExclusive [boolean] Specifies whether or not to use exclusive edit mode (recommended on).</span>
-<a name="l1209"><span class="ln">1209 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sLanguage         [String]  The language portion of the Internationalization Locale to run com.hexidec.ekit.Ekit in.</span>
-<a name="l1210"><span class="ln">1210 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sCountry          [String]  The country portion of the Internationalization Locale to run com.hexidec.ekit.Ekit in.</span>
+<a name="l1209"><span class="ln">1209 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sLanguage         [String]  The language portion of the Internationalization Locale to run space.leandragem.ekitten.Ekit in.</span>
+<a name="l1210"><span class="ln">1210 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sCountry          [String]  The country portion of the Internationalization Locale to run space.leandragem.ekitten.Ekit in.</span>
 <a name="l1211"><span class="ln">1211 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">base64            [boolean] Specifies whether the raw document is Base64 encoded or not.</span>
 <a name="l1212"><span class="ln">1212 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">debugMode         [boolean] Specifies whether to show the Debug menu or not.</span>
 <a name="l1213"><span class="ln">1213 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">hasSpellChecker   [boolean] Specifies whether or not this uses the SpellChecker module</span>
@@ -1249,8 +1249,8 @@ EkitCore.java</font>
 <a name="l1227"><span class="ln">1227 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">showViewSource    [boolean] Specifies whether or not to show the View Source window on startup.</span>
 <a name="l1228"><span class="ln">1228 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">showMenuIcons     [boolean] Specifies whether or not to show icon pictures in menus.</span>
 <a name="l1229"><span class="ln">1229 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">editModeExclusive [boolean] Specifies whether or not to use exclusive edit mode (recommended on).</span>
-<a name="l1230"><span class="ln">1230 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sLanguage         [String]  The language portion of the Internationalization Locale to run com.hexidec.ekit.Ekit in.</span>
-<a name="l1231"><span class="ln">1231 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sCountry          [String]  The country portion of the Internationalization Locale to run com.hexidec.ekit.Ekit in.</span>
+<a name="l1230"><span class="ln">1230 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sLanguage         [String]  The language portion of the Internationalization Locale to run space.leandragem.ekitten.Ekit in.</span>
+<a name="l1231"><span class="ln">1231 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">sCountry          [String]  The country portion of the Internationalization Locale to run space.leandragem.ekitten.Ekit in.</span>
 <a name="l1232"><span class="ln">1232 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">base64            [boolean] Specifies whether the raw document is Base64 encoded or not.</span>
 <a name="l1233"><span class="ln">1233 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">hasSpellChecker   [boolean] Specifies whether or not this uses the SpellChecker module</span>
 <a name="l1234"><span class="ln">1234 </span></a>	  <span class="s2">* </span><span class="s3">@param </span><span class="s2">multiBar          [boolean] Specifies whether to use multiple toolbars or one big toolbar.</span>
@@ -3736,7 +3736,7 @@ EkitCore.java</font>
 <a name="l3714"><span class="ln">3714 </span></a>
 <a name="l3715"><span class="ln">3715 </span></a><span class="s2">/* Inner Classes --------------------------------------------- */</span>
 <a name="l3716"><span class="ln">3716 </span></a>
-<a name="l3717"><span class="ln">3717 </span></a>	<span class="s2">/** Class for implementing Undo as an autonomous com.hexidec.ekit.action</span>
+<a name="l3717"><span class="ln">3717 </span></a>	<span class="s2">/** Class for implementing Undo as an autonomous space.leandragem.ekitten.action</span>
 <a name="l3718"><span class="ln">3718 </span></a>	  <span class="s2">*/</span>
 <a name="l3719"><span class="ln">3719 </span></a>	<span class="s0">class </span><span class="s1">UndoAction </span><span class="s0">extends </span><span class="s1">AbstractAction</span>
 <a name="l3720"><span class="ln">3720 </span></a>	<span class="s1">{</span>
@@ -3766,7 +3766,7 @@ EkitCore.java</font>
 <a name="l3744"><span class="ln">3744 </span></a>		<span class="s1">}</span>
 <a name="l3745"><span class="ln">3745 </span></a>	<span class="s1">}</span>
 <a name="l3746"><span class="ln">3746 </span></a>
-<a name="l3747"><span class="ln">3747 </span></a>	<span class="s2">/** Class for implementing Redo as an autonomous com.hexidec.ekit.action</span>
+<a name="l3747"><span class="ln">3747 </span></a>	<span class="s2">/** Class for implementing Redo as an autonomous space.leandragem.ekitten.action</span>
 <a name="l3748"><span class="ln">3748 </span></a>	  <span class="s2">*/</span>
 <a name="l3749"><span class="ln">3749 </span></a>	<span class="s0">class </span><span class="s1">RedoAction </span><span class="s0">extends </span><span class="s1">AbstractAction</span>
 <a name="l3750"><span class="ln">3750 </span></a>	<span class="s1">{</span>
