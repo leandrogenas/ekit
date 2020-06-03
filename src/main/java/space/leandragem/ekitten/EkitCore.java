@@ -354,7 +354,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 		}
 
 		/* Localize for language */
-		Translatrix.setBundleName("com.hexidec.ekit.LanguageResources");
+		Translatrix.setBundleName("space.leandragem.ekitten.LanguageResources");
 		Locale baseLocale = (Locale)null;
 		if(sLanguage != null && sCountry != null)
 		{
