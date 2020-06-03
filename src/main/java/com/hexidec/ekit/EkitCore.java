@@ -58,7 +58,6 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
@@ -101,7 +100,6 @@ import javax.swing.text.rtf.RTFEditorKit;
 import javax.swing.undo.UndoManager;
 import javax.swing.undo.CannotUndoException;
 
-import com.hexidec.EkitHTMLEditorKit;
 import com.hexidec.ekit.action.*;
 import com.hexidec.ekit.component.*;
 import com.hexidec.util.Base64Codec;

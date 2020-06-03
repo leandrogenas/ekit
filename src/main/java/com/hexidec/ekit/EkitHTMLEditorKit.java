@@ -1,4 +1,4 @@
-package com.hexidec;
+package com.hexidec.ekit;
 
 import com.hexidec.ekit.EkitImageView;
 import com.hexidec.ekit.component.ExtendedHTMLDocument;
