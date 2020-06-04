@@ -42,7 +42,7 @@ import static space.leandragem.ekitten.editor.Toolbar.*;
   * Swing Library
   */
 
-public class Ekit extends JFrame implements WindowListener
+public class Ekit extends JFrame
 {
 	protected EkitCore ekitCore;
 
@@ -123,7 +123,7 @@ public class Ekit extends JFrame implements WindowListener
 
 		this.setJMenuBar(ekitCore.getMenuBar());
 
-		this.addWindowListener(this);
+		this.addWindowListener(this.ekitCore);
 
 		this.updateTitle();
 		this.pack();
@@ -134,19 +134,6 @@ public class Ekit extends JFrame implements WindowListener
 	{
 		this(null, null, null, null, true, false, true, true, null, null, false, false, false, true, false);
 	}
-
-	/* WindowListener methods */
-	public void windowClosing(WindowEvent we)
-	{
-		this.dispose();
-		System.exit(0);
-	}
-	public void windowOpened(WindowEvent we)      { ; }
-	public void windowClosed(WindowEvent we)      { ; }
-	public void windowActivated(WindowEvent we)   { ; }
-	public void windowDeactivated(WindowEvent we) { ; }
-	public void windowIconified(WindowEvent we)   { ; }
-	public void windowDeiconified(WindowEvent we) { ; }
 
 	/** Convenience method for updating the application title bar
 	  */

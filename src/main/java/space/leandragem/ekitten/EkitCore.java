@@ -29,12 +29,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -56,21 +51,7 @@ import java.util.Hashtable;
 import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JComponent;
-import javax.swing.JFileChooser;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextPane;
-import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.event.DocumentEvent;
@@ -121,7 +102,7 @@ import static space.leandragem.ekitten.editor.Command.*;
   * Swing Library
   */
 
-public class EkitCore extends JPanel implements ActionListener, KeyListener, FocusListener, DocumentListener
+public class EkitCore extends JPanel implements ActionListener, KeyListener, FocusListener, DocumentListener, WindowListener
 {
 	/* Components */
 	private JSplitPane jspltDisplay;
@@ -281,6 +262,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 
 	// Control key equivalents on different systems
 	private int CTRLKEY = KeyEvent.CTRL_MASK;
+	private boolean modified = false;
 
 	/** Master Constructor
 	  * @param sDocument         [String]  A text or HTML document to load in the editor upon startup.
@@ -1547,6 +1529,8 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	/* KeyListener methods */
 	public void keyTyped(KeyEvent ke)
 	{
+		modified = true;
+
 		Element elem;
 		int pos = this.getCaretPosition();
 		int repos = -1;
@@ -2575,6 +2559,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 			updateTitle();
 		}
 		refreshOnUpdate();
+		modified = false;
 	}
 
 	/** Method for saving text as an HTML fragment
@@ -3361,10 +3346,54 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 		this.repaint();
 	}
 
+	/* WindowListener methods */
+	public void windowClosing(WindowEvent we)
+	{
+		this.dispose();
+	}
+
+	public void windowOpened(WindowEvent we)      { ; }
+	public void windowClosed(WindowEvent we)      { ; }
+	public void windowActivated(WindowEvent we)   { ; }
+	public void windowDeactivated(WindowEvent we) { ; }
+	public void windowIconified(WindowEvent we)   { ; }
+	public void windowDeiconified(WindowEvent we) { ; }
+
+	protected void saveIfChanged()
+	{
+		if(!modified)
+			return;
+
+		Object[] options = {
+			Translatrix.getTranslationString("SaveDialogYes"),
+			Translatrix.getTranslationString("SaveDialogNo")
+		};
+
+		int save = JOptionPane.showOptionDialog(this,
+			Translatrix.getTranslationString("SaveDialogBody"),
+			Translatrix.getTranslationString("SaveDialogTitle"),
+			JOptionPane.YES_NO_CANCEL_OPTION,
+			JOptionPane.QUESTION_MESSAGE,
+			null,
+			options,
+			options[1]
+		);
+
+		if(save != 0)
+			return;
+
+		try {
+			saveDocument();
+		}catch (Exception e){
+			System.err.println(e.getMessage());
+		}
+	}
+
 	/** Convenience method for deallocating the app resources
 	  */
 	public void dispose()
 	{
+		saveIfChanged();
 		frameHandler.dispose();
 		System.exit(0);
 	}
