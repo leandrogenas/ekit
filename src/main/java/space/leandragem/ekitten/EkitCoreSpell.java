@@ -69,7 +69,7 @@ public class EkitCoreSpell extends EkitCore implements SpellCheckListener
 	  */
 	public EkitCoreSpell(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean useSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak)
 	{
-		super(isParentApplet, sDocument, sStyleSheet, sRawDocument, sdocSource, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, true, multiBar, toolbarSeq, enterBreak);
+		super(isParentApplet, sDocument, sStyleSheet, sRawDocument, sdocSource, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, true, multiBar, toolbarSeq, enterBreak, "Ekitten");
 
 		/* Create spell checker */
 		try

@@ -65,7 +65,7 @@ public class Ekit extends JFrame
 	  * @param multiBar          [boolean] Specifies whether to use multiple toolbars or one big toolbar.
 	  * @param enterBreak        [boolean] Specifies whether the ENTER key should insert breaks instead of paragraph tags.
 	  */
-	public Ekit(String sDocument, String sStyleSheet, String sRawDocument, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean useSpellChecker, boolean multiBar, boolean enterBreak)
+	public Ekit(String sDocument, String sStyleSheet, String sRawDocument, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean useSpellChecker, boolean multiBar, boolean enterBreak, String appName)
 	{
 		if(useSpellChecker)
 		{
@@ -73,10 +73,10 @@ public class Ekit extends JFrame
 		}
 		else
 		{
-			ekitCore = new EkitCore(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, false, multiBar, (multiBar ? TOOLBAR_DEFAULT_MULTI : TOOLBAR_DEFAULT_SINGLE), enterBreak);
+			ekitCore = new EkitCore(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, false, multiBar, (multiBar ? TOOLBAR_DEFAULT_MULTI : TOOLBAR_DEFAULT_SINGLE), enterBreak, appName);
 		}
 
-		ekitCore.setFrame(this);
+		ekitCore.setFrame(ekitCore.getFrame());
 
 		/* Add the components to the app */
 		if(includeToolBar)
@@ -132,7 +132,7 @@ public class Ekit extends JFrame
 
 	public Ekit()
 	{
-		this(null, null, null, null, true, false, true, true, null, null, false, false, false, true, false);
+		this(null, null, null, null, true, false, true, true, null, null, false, false, false, true, false, "Ekitten");
 	}
 
 	/** Convenience method for updating the application title bar
@@ -146,7 +146,7 @@ public class Ekit extends JFrame
 	  */
 	public static void usage()
 	{
-		System.out.println("usage: com.hexidec.ekit.space.leandragem.ekitten.Ekit [-t|t+|T] [-s|S] [-m|M] [-x|X] [-b|B] [-v|V] [-p|P] [-fFILE] [-cCSS] [-rRAW] [-uURL] [-lLANG] [-d|D] [-h|H|?]");
+		System.out.println("usage: Ekitten [-t|t+|T] [-s|S] [-m|M] [-x|X] [-b|B] [-v|V] [-p|P] [-fFILE] [-cCSS] [-rRAW] [-uURL] [-lLANG] [-d|D] [-h|H|?]");
 		System.out.println("       Each option contained in [] brackets is optional,");
 		System.out.println("       and can be one of the values separated be the | pipe.");
 		System.out.println("       Each option must be proceeded by a - hyphen.");
@@ -190,7 +190,8 @@ public class Ekit extends JFrame
 		boolean base64 = false;
 		boolean debugOn = false;
 		boolean spellCheck = false;
-		boolean enterBreak = false;
+		boolean enterBreak = true;
+		String appName = "Ekitten";
 		for(int i = 0; i < args.length; i++)
 		{
 			if     (args[i].equals("-h") ||
@@ -207,13 +208,14 @@ public class Ekit extends JFrame
 			else if(args[i].equals("-X"))     { modeExclusive = false; }
 			else if(args[i].equals("-b"))     { base64 = true; }
 			else if(args[i].equals("-B"))     { base64 = false; }
-			else if(args[i].startsWith("-f")) { sDocument = args[i].substring(2, args[i].length()); }
-			else if(args[i].startsWith("-c")) { sStyleSheet = args[i].substring(2, args[i].length()); }
-			else if(args[i].startsWith("-r")) { sRawDocument = args[i].substring(2, args[i].length()); }
+			else if(args[i].startsWith("-f")) { sDocument = args[i].substring(2); }
+			else if(args[i].startsWith("-c")) { sStyleSheet = args[i].substring(2); }
+			else if(args[i].startsWith("-r")) { sRawDocument = args[i].substring(2); }
 			else if(args[i].equals("-v"))     { spellCheck = true; }
 			else if(args[i].equals("-V"))     { spellCheck = false; }
 			else if(args[i].equals("-p"))     { enterBreak = false; }
 			else if(args[i].equals("-P"))     { enterBreak = true; }
+			else if(args[i].startsWith("-n"))     { appName = args[i].substring(2); }
 			else if(args[i].startsWith("-u"))
 			{
 				try
@@ -237,7 +239,7 @@ public class Ekit extends JFrame
 			else if(args[i].equals("-D"))     { debugOn = false; }
 		}
 
-		Ekit ekit = new Ekit(sDocument, sStyleSheet, sRawDocument, urlStyleSheet, includeToolBar, includeViewSource, includeMenuIcons, modeExclusive, sLang, sCtry, base64, debugOn, spellCheck, multibar, enterBreak);
+		Ekit ekit = new Ekit(sDocument, sStyleSheet, sRawDocument, urlStyleSheet, includeToolBar, includeViewSource, includeMenuIcons, modeExclusive, sLang, sCtry, base64, debugOn, spellCheck, multibar, enterBreak, appName);
 	}
 
 }

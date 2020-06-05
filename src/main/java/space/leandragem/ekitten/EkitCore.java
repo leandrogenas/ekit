@@ -222,7 +222,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	protected static Hashtable<String, JMenu>      htMenus = new Hashtable<String, JMenu>();
 	protected static Hashtable<String, JComponent> htTools = new Hashtable<String, JComponent>();
 
-	private final String appName = "space.leandragem.ekitten.Ekit";
+	private String appName = "Ekitten";
 	private final String menuDialog = "..."; /* text to append to a MenuItem label when menu item opens a dialog */
 
 	private final boolean useFormIndicator = true; /* Creates a highlighted background on a new FORM so that it may be more easily edited */
@@ -284,13 +284,14 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	  * @param keepUnknownTags   [boolean] Specifies whether or not the parser should retain unknown tags.
 	  * @param enterBreak        [boolean] Specifies whether the ENTER key should insert breaks instead of paragraph tags.
 	  */
-	public EkitCore(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean keepUnknownTags, boolean enterBreak)
+	public EkitCore(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean keepUnknownTags, boolean enterBreak, String appName)
 	{
 		super();
 
 		exclusiveEdit = editModeExclusive;
 		preserveUnknownTags = keepUnknownTags;
 		enterIsBreak = enterBreak;
+		this.appName = appName;
 
 		frameHandler = new Frame();
 
@@ -1091,9 +1092,9 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	  * @param toolbarSeq        [String]  Code string specifying the toolbar buttons to show.
 	  * @param enterBreak        [boolean] Specifies whether the ENTER key should insert breaks instead of paragraph tags.
 	  */
-	public EkitCore(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak)
+	public EkitCore(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak, String appName)
 	{
-		this(isParentApplet, sDocument, sStyleSheet, sRawDocument, sdocSource, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, hasSpellChecker, multiBar, toolbarSeq, false, enterBreak);
+		this(isParentApplet, sDocument, sStyleSheet, sRawDocument, sdocSource, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, hasSpellChecker, multiBar, toolbarSeq, false, enterBreak, appName);
 	}
 
 	/** Raw/Base64 Document & Style Sheet URL Constructor (Ideal for space.leandragem.ekitten.EkitApplet)
@@ -1111,16 +1112,16 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	  * @param toolbarSeq        [String]  Code string specifying the toolbar buttons to show.
 	  * @param enterBreak        [boolean] Specifies whether the ENTER key should insert breaks instead of paragraph tags.
 	  */
-	public EkitCore(boolean isParentApplet, String sRawDocument, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak)
+	public EkitCore(boolean isParentApplet, String sRawDocument, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak, String appName)
 	{
-		this(isParentApplet, null, null, sRawDocument, (StyledDocument)null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, false, hasSpellChecker, multiBar, toolbarSeq, enterBreak);
+		this(isParentApplet, null, null, sRawDocument, (StyledDocument)null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, false, hasSpellChecker, multiBar, toolbarSeq, enterBreak, appName);
 	}
 
 	/** Parent Only Specified Constructor
 	  */
 	public EkitCore(boolean isParentApplet)
 	{
-		this(isParentApplet, (String)null, (String)null, (String)null, (StyledDocument)null, (URL)null, true, false, true, true, (String)null, (String)null, false, false, false, true, TOOLBAR_DEFAULT_MULTI, false);
+		this(isParentApplet, (String)null, (String)null, (String)null, (StyledDocument)null, (URL)null, true, false, true, true, (String)null, (String)null, false, false, false, true, TOOLBAR_DEFAULT_MULTI, false, "Ekitten");
 	}
 
 	/** Empty Constructor
@@ -1678,7 +1679,8 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 						}
 					}
 				}
-				else if(enterIsBreak)
+//				else if(enterIsBreak)
+				else if(true)
 				{
 					insertBreak();
 					ke.consume();
@@ -3359,14 +3361,15 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	public void windowIconified(WindowEvent we)   { ; }
 	public void windowDeiconified(WindowEvent we) { ; }
 
-	protected void saveIfChanged()
+	protected boolean shouldExitAndSave()
 	{
 		if(!modified)
-			return;
+			return true;
 
 		Object[] options = {
 			Translatrix.getTranslationString("SaveDialogYes"),
-			Translatrix.getTranslationString("SaveDialogNo")
+			Translatrix.getTranslationString("SaveDialogNo"),
+			Translatrix.getTranslationString("SaveDialogCancel")
 		};
 
 		int save = JOptionPane.showOptionDialog(this,
@@ -3376,26 +3379,31 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 			JOptionPane.QUESTION_MESSAGE,
 			null,
 			options,
-			options[1]
+			options[2]
 		);
 
-		if(save != 0)
-			return;
+		if(save == 1)
+			return true;
+		if(save == 2)
+			return false;
 
 		try {
 			saveDocument();
 		}catch (Exception e){
 			System.err.println(e.getMessage());
 		}
+
+		return true;
 	}
 
 	/** Convenience method for deallocating the app resources
 	  */
 	public void dispose()
 	{
-		saveIfChanged();
-		frameHandler.dispose();
-		System.exit(0);
+		if(shouldExitAndSave()) {
+			frameHandler.dispose();
+			System.exit(0);
+		}
 	}
 
 	/** Convenience method for outputting exceptions

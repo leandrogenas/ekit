@@ -96,7 +96,7 @@ public class EkitApplet extends JApplet
 		}
 		else
 		{
-			ekitCore = new EkitCore(true, sRawDocument, urlCSS, showToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, false, showToolBarMulti, toolbarSeq, enterBreak);
+			ekitCore = new EkitCore(true, sRawDocument, urlCSS, showToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, false, showToolBarMulti, toolbarSeq, enterBreak, "Ekitten");
 		}
 
 		/* Add menus, based on whether or not they are requested (all are shown by default) */
