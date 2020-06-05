@@ -24,7 +24,7 @@ package space.leandragem.ekitten.action;
 import java.awt.event.ActionEvent;
 import javax.swing.text.StyledEditorKit;
 
-import space.leandragem.ekitten.EkitCore;
+import space.leandragem.ekitten.EkittenCore;
 import space.leandragem.ekitten.component.FontSelectorDialog;
 import space.leandragem.util.Translatrix;
 
@@ -33,9 +33,9 @@ import space.leandragem.util.Translatrix;
 public class SetFontFamilyAction extends StyledEditorKit.FontFamilyAction
 {
 	protected String   name;
-	protected EkitCore parentEkit;
+	protected EkittenCore parentEkit;
 
-	public SetFontFamilyAction(EkitCore ekit, String actionName)
+	public SetFontFamilyAction(EkittenCore ekit, String actionName)
 	{
 		super(actionName, "");
 		this.name = actionName;

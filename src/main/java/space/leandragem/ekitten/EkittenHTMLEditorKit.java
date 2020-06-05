@@ -7,7 +7,7 @@ import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
-public class EkitHTMLEditorKit extends HTMLEditorKit {
+public class EkittenHTMLEditorKit extends HTMLEditorKit {
     private static HTMLFactory factory = null;
 
     public Document createDefaultDocument()
@@ -35,7 +35,7 @@ public class EkitHTMLEditorKit extends HTMLEditorKit {
                     if (o instanceof HTML.Tag) {
                         HTML.Tag kind = (HTML.Tag) o;
                         if (kind == HTML.Tag.IMG) {
-                            return new EkitImageView(elem);
+                            return new EkittenImageView(elem);
                         }
                     }
                     return super.create(elem);

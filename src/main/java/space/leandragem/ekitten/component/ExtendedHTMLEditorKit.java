@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package space.leandragem.ekitten.component;
 
-import space.leandragem.ekitten.EkitImageView;
+import space.leandragem.ekitten.EkittenImageView;
 
 import javax.swing.text.Document;
 import javax.swing.text.Element;
@@ -92,7 +92,7 @@ public class ExtendedHTMLEditorKit extends HTMLEditorKit
 				HTML.Tag tagType = (HTML.Tag)obj;
 				if(tagType == HTML.Tag.IMG)
 				{
-					return new EkitImageView(elem);
+					return new EkittenImageView(elem);
 				}
 			}
 			return super.create(elem);

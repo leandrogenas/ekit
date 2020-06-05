@@ -42,7 +42,7 @@ import static space.leandragem.ekitten.editor.Toolbar.*;
   * Swing Library
   */
 
-public class EkitCoreSpell extends EkitCore implements SpellCheckListener
+public class EkittenCoreSpell extends EkittenCore implements SpellCheckListener
 {
 	/* Spell Checker Settings */
 	private static String dictFile;
@@ -67,7 +67,7 @@ public class EkitCoreSpell extends EkitCore implements SpellCheckListener
 	  * @param multiBar          [boolean] Specifies whether to use multiple toolbars or one big toolbar.
 	  * @param enterBreak        [boolean] Specifies whether the ENTER key should insert breaks instead of paragraph tags.
 	  */
-	public EkitCoreSpell(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean useSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak)
+	public EkittenCoreSpell(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean useSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak)
 	{
 		super(isParentApplet, sDocument, sStyleSheet, sRawDocument, sdocSource, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, true, multiBar, toolbarSeq, enterBreak, "Ekitten");
 
@@ -97,21 +97,21 @@ public class EkitCoreSpell extends EkitCore implements SpellCheckListener
 	  * @param sCountry          [String]  The country portion of the Internationalization Locale to run space.leandragem.ekitten.Ekit in.
 	  * @param enterBreak        [boolean] Specifies whether the ENTER key should insert breaks instead of paragraph tags.
 	  */
-	public EkitCoreSpell(boolean isParentApplet, String sRawDocument, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean multiBar, String toolbarSeq, boolean enterBreak)
+	public EkittenCoreSpell(boolean isParentApplet, String sRawDocument, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean multiBar, String toolbarSeq, boolean enterBreak)
 	{
 		this(isParentApplet, null, null, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, false, true, multiBar, toolbarSeq, enterBreak);
 	}
 
 	/** Parent Only Specified Constructor
 	  */
-	public EkitCoreSpell(boolean isParentApplet)
+	public EkittenCoreSpell(boolean isParentApplet)
 	{
 		this(isParentApplet, null, null, null, null, null, true, false, true, true, null, null, false, false, true, false, TOOLBAR_DEFAULT_SINGLE, false);
 	}
 
 	/** Empty Constructor
 	  */
-	public EkitCoreSpell()
+	public EkittenCoreSpell()
 	{
 		this(false);
 	}

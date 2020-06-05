@@ -102,7 +102,7 @@ import static space.leandragem.ekitten.editor.Command.*;
   * Swing Library
   */
 
-public class EkitCore extends JPanel implements ActionListener, KeyListener, FocusListener, DocumentListener, WindowListener
+public class EkittenCore extends JPanel implements ActionListener, KeyListener, FocusListener, DocumentListener, WindowListener
 {
 	/* Components */
 	private JSplitPane jspltDisplay;
@@ -284,7 +284,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	  * @param keepUnknownTags   [boolean] Specifies whether or not the parser should retain unknown tags.
 	  * @param enterBreak        [boolean] Specifies whether the ENTER key should insert breaks instead of paragraph tags.
 	  */
-	public EkitCore(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean keepUnknownTags, boolean enterBreak, String appName)
+	public EkittenCore(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean keepUnknownTags, boolean enterBreak, String appName)
 	{
 		super();
 
@@ -800,7 +800,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 			jbtnCut.setActionCommand(CMD_CLIP_CUT);
 			jbtnCut.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
-					EkitCore.this.actionPerformed(evt);
+					EkittenCore.this.actionPerformed(evt);
 				}
 			});
 			jbtnCut.setIcon(Load.EkitIcon("Cut"));
@@ -812,7 +812,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 			jbtnCopy.setActionCommand(CMD_CLIP_COPY);
 			jbtnCopy.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
-					EkitCore.this.actionPerformed(evt);
+					EkittenCore.this.actionPerformed(evt);
 				}
 			});
 			jbtnCopy.setIcon(Load.EkitIcon("Copy"));
@@ -824,7 +824,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 			jbtnPaste.setActionCommand(CMD_CLIP_PASTE);
 			jbtnPaste.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
-					EkitCore.this.actionPerformed(evt);
+					EkittenCore.this.actionPerformed(evt);
 				}
 			});
 			jbtnPaste.setIcon(Load.EkitIcon("Paste"));
@@ -835,7 +835,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 			jbtnPasteX.setActionCommand(CMD_CLIP_PASTE_PLAIN);
 			jbtnPasteX.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
-					EkitCore.this.actionPerformed(evt);
+					EkittenCore.this.actionPerformed(evt);
 				}
 			});
 			jbtnPasteX.setIcon(Load.EkitIcon("PasteUnformatted"));
@@ -1092,7 +1092,7 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	  * @param toolbarSeq        [String]  Code string specifying the toolbar buttons to show.
 	  * @param enterBreak        [boolean] Specifies whether the ENTER key should insert breaks instead of paragraph tags.
 	  */
-	public EkitCore(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak, String appName)
+	public EkittenCore(boolean isParentApplet, String sDocument, String sStyleSheet, String sRawDocument, StyledDocument sdocSource, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak, String appName)
 	{
 		this(isParentApplet, sDocument, sStyleSheet, sRawDocument, sdocSource, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, hasSpellChecker, multiBar, toolbarSeq, false, enterBreak, appName);
 	}
@@ -1112,21 +1112,21 @@ public class EkitCore extends JPanel implements ActionListener, KeyListener, Foc
 	  * @param toolbarSeq        [String]  Code string specifying the toolbar buttons to show.
 	  * @param enterBreak        [boolean] Specifies whether the ENTER key should insert breaks instead of paragraph tags.
 	  */
-	public EkitCore(boolean isParentApplet, String sRawDocument, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak, String appName)
+	public EkittenCore(boolean isParentApplet, String sRawDocument, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean hasSpellChecker, boolean multiBar, String toolbarSeq, boolean enterBreak, String appName)
 	{
 		this(isParentApplet, null, null, sRawDocument, (StyledDocument)null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, false, hasSpellChecker, multiBar, toolbarSeq, enterBreak, appName);
 	}
 
 	/** Parent Only Specified Constructor
 	  */
-	public EkitCore(boolean isParentApplet)
+	public EkittenCore(boolean isParentApplet)
 	{
 		this(isParentApplet, (String)null, (String)null, (String)null, (StyledDocument)null, (URL)null, true, false, true, true, (String)null, (String)null, false, false, false, true, TOOLBAR_DEFAULT_MULTI, false, "Ekitten");
 	}
 
 	/** Empty Constructor
 	  */
-	public EkitCore()
+	public EkittenCore()
 	{
 		this(false);
 	}

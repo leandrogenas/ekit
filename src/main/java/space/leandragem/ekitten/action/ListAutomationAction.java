@@ -31,19 +31,19 @@ import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 
-import space.leandragem.ekitten.EkitCore;
+import space.leandragem.ekitten.EkittenCore;
 import space.leandragem.ekitten.component.*;
 
 /** Class for automatically creating bulleted lists from selected text
   */
 public class ListAutomationAction extends HTMLEditorKit.InsertHTMLTextAction
 {
-	protected EkitCore parentEkit;
+	protected EkittenCore parentEkit;
 	private HTML.Tag baseTag;
 	private String sListType;
 	private HTMLUtilities htmlUtilities;
 
-	public ListAutomationAction(EkitCore ekit, String sLabel, HTML.Tag listType)
+	public ListAutomationAction(EkittenCore ekit, String sLabel, HTML.Tag listType)
 	{
 		super(sLabel, "", listType, HTML.Tag.LI);
 		parentEkit    = ekit;

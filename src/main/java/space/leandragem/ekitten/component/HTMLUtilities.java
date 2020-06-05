@@ -27,14 +27,14 @@ import javax.swing.*;
 import javax.swing.text.*;
 import javax.swing.text.html.*;
 
-import space.leandragem.ekitten.EkitCore;
+import space.leandragem.ekitten.EkittenCore;
 
 public class HTMLUtilities
 {
-	EkitCore parent;
+	EkittenCore parent;
 	Hashtable<String, HTML.Tag> tags = new Hashtable<String, HTML.Tag>();
 
-	public HTMLUtilities(EkitCore newParent)
+	public HTMLUtilities(EkittenCore newParent)
 	{
 		parent = newParent;
 		HTML.Tag[] tagList = HTML.getAllTags();

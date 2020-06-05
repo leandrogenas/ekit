@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package space.leandragem.ekitten.component;
 
-import space.leandragem.ekitten.EkitCore;
+import space.leandragem.ekitten.EkittenCore;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,7 +40,7 @@ public class UserInputAnchorDialog extends JDialog implements ActionListener
 	private String inputText = null;
 	private final JTextField jtxfInput = new JTextField(32);
 
-	public UserInputAnchorDialog(EkitCore peKit, String title, boolean bModal, String defaultAnchor)
+	public UserInputAnchorDialog(EkittenCore peKit, String title, boolean bModal, String defaultAnchor)
 	{		
 		super(peKit.getFrame(), title, bModal);
 //		parentEkit = peKit;

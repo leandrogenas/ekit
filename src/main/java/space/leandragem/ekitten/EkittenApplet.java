@@ -40,14 +40,14 @@ import static space.leandragem.ekitten.editor.Toolbar.*;
   * Swing Library
   */
 
-public class EkitApplet extends JApplet
+public class EkittenApplet extends JApplet
 {
 	/* Components */
-	EkitCore ekitCore;
+	EkittenCore ekittenCore;
 
 	/** Constructor
 	  */
-	public EkitApplet()
+	public EkittenApplet()
 	{
 		getRootPane().putClientProperty("defeatSystemEventQueueCheck", Boolean.TRUE);
 	}
@@ -92,26 +92,26 @@ public class EkitApplet extends JApplet
 
 		if(spellChecker)
 		{
-			ekitCore = new EkitCoreSpell(true, sRawDocument, urlCSS, showToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, showToolBarMulti, toolbarSeq, enterBreak);
+			ekittenCore = new EkittenCoreSpell(true, sRawDocument, urlCSS, showToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, showToolBarMulti, toolbarSeq, enterBreak);
 		}
 		else
 		{
-			ekitCore = new EkitCore(true, sRawDocument, urlCSS, showToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, false, showToolBarMulti, toolbarSeq, enterBreak, "Ekitten");
+			ekittenCore = new EkittenCore(true, sRawDocument, urlCSS, showToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, false, showToolBarMulti, toolbarSeq, enterBreak, "Ekitten");
 		}
 
 		/* Add menus, based on whether or not they are requested (all are shown by default) */
 		Vector vcMenus = new Vector();
-		if(this.getParameter("MENU_EDIT")   != null) { if(this.getParameter("MENU_EDIT").equalsIgnoreCase("true"))   { vcMenus.add(EkitCore.KEY_MENU_EDIT); } }   else { vcMenus.add(EkitCore.KEY_MENU_EDIT); }
-		if(this.getParameter("MENU_VIEW")   != null) { if(this.getParameter("MENU_VIEW").equalsIgnoreCase("true"))   { vcMenus.add(EkitCore.KEY_MENU_VIEW); } }   else { vcMenus.add(EkitCore.KEY_MENU_VIEW); }
-		if(this.getParameter("MENU_FONT")   != null) { if(this.getParameter("MENU_FONT").equalsIgnoreCase("true"))   { vcMenus.add(EkitCore.KEY_MENU_FONT); } }   else { vcMenus.add(EkitCore.KEY_MENU_FONT); }
-		if(this.getParameter("MENU_FORMAT") != null) { if(this.getParameter("MENU_FORMAT").equalsIgnoreCase("true")) { vcMenus.add(EkitCore.KEY_MENU_FORMAT); } } else { vcMenus.add(EkitCore.KEY_MENU_FORMAT); }
-		if(this.getParameter("MENU_INSERT") != null) { if(this.getParameter("MENU_INSERT").equalsIgnoreCase("true")) { vcMenus.add(EkitCore.KEY_MENU_INSERT); } } else { vcMenus.add(EkitCore.KEY_MENU_INSERT); }
-		if(this.getParameter("MENU_TABLE")  != null) { if(this.getParameter("MENU_TABLE").equalsIgnoreCase("true"))  { vcMenus.add(EkitCore.KEY_MENU_TABLE); } }  else { vcMenus.add(EkitCore.KEY_MENU_TABLE); }
-		if(this.getParameter("MENU_FORMS")  != null) { if(this.getParameter("MENU_FORMS").equalsIgnoreCase("true"))  { vcMenus.add(EkitCore.KEY_MENU_FORMS); } }  else { vcMenus.add(EkitCore.KEY_MENU_FORMS); }
-		if(this.getParameter("MENU_SEARCH") != null) { if(this.getParameter("MENU_SEARCH").equalsIgnoreCase("true")) { vcMenus.add(EkitCore.KEY_MENU_SEARCH); } } else { vcMenus.add(EkitCore.KEY_MENU_SEARCH); }
-		if(this.getParameter("MENU_TOOLS")  != null) { if(this.getParameter("MENU_TOOLS").equalsIgnoreCase("true"))  { vcMenus.add(EkitCore.KEY_MENU_TOOLS); } }  else { vcMenus.add(EkitCore.KEY_MENU_TOOLS); }
-		if(this.getParameter("MENU_HELP")   != null) { if(this.getParameter("MENU_HELP").equalsIgnoreCase("true"))   { vcMenus.add(EkitCore.KEY_MENU_HELP); } }   else { vcMenus.add(EkitCore.KEY_MENU_HELP); }
-		this.setJMenuBar(ekitCore.getCustomMenuBar(vcMenus));
+		if(this.getParameter("MENU_EDIT")   != null) { if(this.getParameter("MENU_EDIT").equalsIgnoreCase("true"))   { vcMenus.add(EkittenCore.KEY_MENU_EDIT); } }   else { vcMenus.add(EkittenCore.KEY_MENU_EDIT); }
+		if(this.getParameter("MENU_VIEW")   != null) { if(this.getParameter("MENU_VIEW").equalsIgnoreCase("true"))   { vcMenus.add(EkittenCore.KEY_MENU_VIEW); } }   else { vcMenus.add(EkittenCore.KEY_MENU_VIEW); }
+		if(this.getParameter("MENU_FONT")   != null) { if(this.getParameter("MENU_FONT").equalsIgnoreCase("true"))   { vcMenus.add(EkittenCore.KEY_MENU_FONT); } }   else { vcMenus.add(EkittenCore.KEY_MENU_FONT); }
+		if(this.getParameter("MENU_FORMAT") != null) { if(this.getParameter("MENU_FORMAT").equalsIgnoreCase("true")) { vcMenus.add(EkittenCore.KEY_MENU_FORMAT); } } else { vcMenus.add(EkittenCore.KEY_MENU_FORMAT); }
+		if(this.getParameter("MENU_INSERT") != null) { if(this.getParameter("MENU_INSERT").equalsIgnoreCase("true")) { vcMenus.add(EkittenCore.KEY_MENU_INSERT); } } else { vcMenus.add(EkittenCore.KEY_MENU_INSERT); }
+		if(this.getParameter("MENU_TABLE")  != null) { if(this.getParameter("MENU_TABLE").equalsIgnoreCase("true"))  { vcMenus.add(EkittenCore.KEY_MENU_TABLE); } }  else { vcMenus.add(EkittenCore.KEY_MENU_TABLE); }
+		if(this.getParameter("MENU_FORMS")  != null) { if(this.getParameter("MENU_FORMS").equalsIgnoreCase("true"))  { vcMenus.add(EkittenCore.KEY_MENU_FORMS); } }  else { vcMenus.add(EkittenCore.KEY_MENU_FORMS); }
+		if(this.getParameter("MENU_SEARCH") != null) { if(this.getParameter("MENU_SEARCH").equalsIgnoreCase("true")) { vcMenus.add(EkittenCore.KEY_MENU_SEARCH); } } else { vcMenus.add(EkittenCore.KEY_MENU_SEARCH); }
+		if(this.getParameter("MENU_TOOLS")  != null) { if(this.getParameter("MENU_TOOLS").equalsIgnoreCase("true"))  { vcMenus.add(EkittenCore.KEY_MENU_TOOLS); } }  else { vcMenus.add(EkittenCore.KEY_MENU_TOOLS); }
+		if(this.getParameter("MENU_HELP")   != null) { if(this.getParameter("MENU_HELP").equalsIgnoreCase("true"))   { vcMenus.add(EkittenCore.KEY_MENU_HELP); } }   else { vcMenus.add(EkittenCore.KEY_MENU_HELP); }
+		this.setJMenuBar(ekittenCore.getCustomMenuBar(vcMenus));
 
 		/* Add the components to the app */
 		if(showToolBar)
@@ -128,30 +128,30 @@ public class EkitApplet extends JApplet
 				gbc.weighty    = 0.0;
 				gbc.gridx      = 1;
 
-				ekitCore.initializeMultiToolbars(toolbarSeq);
+				ekittenCore.initializeMultiToolbars(toolbarSeq);
 
 				gbc.gridy = 1;
-				this.getContentPane().add(ekitCore.getToolBarMain(showToolBar && ekitCore.getToolBarMain(showToolBar).getComponentCount() > 0), gbc);
+				this.getContentPane().add(ekittenCore.getToolBarMain(showToolBar && ekittenCore.getToolBarMain(showToolBar).getComponentCount() > 0), gbc);
 
 				gbc.gridy = 2;
-				this.getContentPane().add(ekitCore.getToolBarFormat(showToolBar && ekitCore.getToolBarFormat(showToolBar).getComponentCount() > 0), gbc);
+				this.getContentPane().add(ekittenCore.getToolBarFormat(showToolBar && ekittenCore.getToolBarFormat(showToolBar).getComponentCount() > 0), gbc);
 
 				gbc.gridy = 3;
-				this.getContentPane().add(ekitCore.getToolBarStyles(showToolBar && ekitCore.getToolBarStyles(showToolBar).getComponentCount() > 0), gbc);
+				this.getContentPane().add(ekittenCore.getToolBarStyles(showToolBar && ekittenCore.getToolBarStyles(showToolBar).getComponentCount() > 0), gbc);
 
 				gbc.anchor     = GridBagConstraints.CENTER;
 				gbc.fill       = GridBagConstraints.BOTH;
 				gbc.weighty    = 1.0;
 				gbc.gridy      = 4;
-				this.getContentPane().add(ekitCore, gbc);
+				this.getContentPane().add(ekittenCore, gbc);
 			}
 			else
 			{
-				ekitCore.initializeSingleToolbar(toolbarSeq);
+				ekittenCore.initializeSingleToolbar(toolbarSeq);
 
 				this.getContentPane().setLayout(new BorderLayout());
-				this.getContentPane().add(ekitCore, BorderLayout.CENTER);
-				this.getContentPane().add(ekitCore.getToolBar(showToolBar), BorderLayout.NORTH);
+				this.getContentPane().add(ekittenCore, BorderLayout.CENTER);
+				this.getContentPane().add(ekittenCore.getToolBar(showToolBar), BorderLayout.NORTH);
 			}
 		}
 	}
@@ -166,7 +166,7 @@ public class EkitApplet extends JApplet
 	  */
 	public String getDocumentText()
 	{
-		return ekitCore.getDocumentText();
+		return ekittenCore.getDocumentText();
 	}
 
 	/** Method for passing back the document body to the applet's container.
@@ -174,7 +174,7 @@ public class EkitApplet extends JApplet
 	  */
 	public String getDocumentBody()
 	{
-		return ekitCore.getDocumentSubText("body");
+		return ekittenCore.getDocumentSubText("body");
 	}
 
 	/** Method for passing back the document as an RTF document string.
@@ -183,7 +183,7 @@ public class EkitApplet extends JApplet
 	{
 		try
 		{
-			return ekitCore.getRTFDocument();
+			return ekittenCore.getRTFDocument();
 		}
 		catch(Exception e)
 		{
@@ -196,6 +196,6 @@ public class EkitApplet extends JApplet
 	  */
 	public void setDocumentText(String text)
 	{
-		ekitCore.setDocumentText(text);
+		ekittenCore.setDocumentText(text);
 	}
 }

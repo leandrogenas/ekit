@@ -22,8 +22,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -42,9 +40,9 @@ import static space.leandragem.ekitten.editor.Toolbar.*;
   * Swing Library
   */
 
-public class Ekit extends JFrame
+public class Ekitten extends JFrame
 {
-	protected EkitCore ekitCore;
+	protected EkittenCore ekittenCore;
 
 	protected File currentFile = (File)null;
 
@@ -65,18 +63,18 @@ public class Ekit extends JFrame
 	  * @param multiBar          [boolean] Specifies whether to use multiple toolbars or one big toolbar.
 	  * @param enterBreak        [boolean] Specifies whether the ENTER key should insert breaks instead of paragraph tags.
 	  */
-	public Ekit(String sDocument, String sStyleSheet, String sRawDocument, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean useSpellChecker, boolean multiBar, boolean enterBreak, String appName)
+	public Ekitten(String sDocument, String sStyleSheet, String sRawDocument, URL urlStyleSheet, boolean includeToolBar, boolean showViewSource, boolean showMenuIcons, boolean editModeExclusive, String sLanguage, String sCountry, boolean base64, boolean debugMode, boolean useSpellChecker, boolean multiBar, boolean enterBreak, String appName)
 	{
 		if(useSpellChecker)
 		{
-			ekitCore = new EkitCoreSpell(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, true, multiBar, (multiBar ? TOOLBAR_DEFAULT_MULTI : TOOLBAR_DEFAULT_SINGLE), enterBreak);
+			ekittenCore = new EkittenCoreSpell(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, true, multiBar, (multiBar ? TOOLBAR_DEFAULT_MULTI : TOOLBAR_DEFAULT_SINGLE), enterBreak);
 		}
 		else
 		{
-			ekitCore = new EkitCore(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, false, multiBar, (multiBar ? TOOLBAR_DEFAULT_MULTI : TOOLBAR_DEFAULT_SINGLE), enterBreak, appName);
+			ekittenCore = new EkittenCore(false, sDocument, sStyleSheet, sRawDocument, null, urlStyleSheet, includeToolBar, showViewSource, showMenuIcons, editModeExclusive, sLanguage, sCountry, base64, debugMode, false, multiBar, (multiBar ? TOOLBAR_DEFAULT_MULTI : TOOLBAR_DEFAULT_SINGLE), enterBreak, appName);
 		}
 
-		ekitCore.setFrame(ekitCore.getFrame());
+		ekittenCore.setFrame(ekittenCore.getFrame());
 
 		/* Add the components to the app */
 		if(includeToolBar)
@@ -94,43 +92,43 @@ public class Ekit extends JFrame
 				gbc.gridx      = 1;
 
 				gbc.gridy      = 1;
-				this.getContentPane().add(ekitCore.getToolBarMain(includeToolBar), gbc);
+				this.getContentPane().add(ekittenCore.getToolBarMain(includeToolBar), gbc);
 
 				gbc.gridy      = 2;
-				this.getContentPane().add(ekitCore.getToolBarFormat(includeToolBar), gbc);
+				this.getContentPane().add(ekittenCore.getToolBarFormat(includeToolBar), gbc);
 
 				gbc.gridy      = 3;
-				this.getContentPane().add(ekitCore.getToolBarStyles(includeToolBar), gbc);
+				this.getContentPane().add(ekittenCore.getToolBarStyles(includeToolBar), gbc);
 
 				gbc.anchor     = GridBagConstraints.SOUTH;
 				gbc.fill       = GridBagConstraints.BOTH;
 				gbc.weighty    = 1.0;
 				gbc.gridy      = 4;
-				this.getContentPane().add(ekitCore, gbc);
+				this.getContentPane().add(ekittenCore, gbc);
 			}
 			else
 			{
 				this.getContentPane().setLayout(new BorderLayout());
-				this.getContentPane().add(ekitCore, BorderLayout.CENTER);
-				this.getContentPane().add(ekitCore.getToolBar(includeToolBar), BorderLayout.NORTH);
+				this.getContentPane().add(ekittenCore, BorderLayout.CENTER);
+				this.getContentPane().add(ekittenCore.getToolBar(includeToolBar), BorderLayout.NORTH);
 			}
 		}
 		else
 		{
 			this.getContentPane().setLayout(new BorderLayout());
-			this.getContentPane().add(ekitCore, BorderLayout.CENTER);
+			this.getContentPane().add(ekittenCore, BorderLayout.CENTER);
 		}
 
-		this.setJMenuBar(ekitCore.getMenuBar());
+		this.setJMenuBar(ekittenCore.getMenuBar());
 
-		this.addWindowListener(this.ekitCore);
+		this.addWindowListener(this.ekittenCore);
 
 		this.updateTitle();
 		this.pack();
 		this.setVisible(true);
 	}
 
-	public Ekit()
+	public Ekitten()
 	{
 		this(null, null, null, null, true, false, true, true, null, null, false, false, false, true, false, "Ekitten");
 	}
@@ -139,7 +137,7 @@ public class Ekit extends JFrame
 	  */
 	protected void updateTitle()
 	{
-		this.setTitle(ekitCore.getAppName() + (currentFile == null ? "" : " - " + currentFile.getName()));
+		this.setTitle(ekittenCore.getAppName() + (currentFile == null ? "" : " - " + currentFile.getName()));
 	}
 
 	/** Usage method
@@ -239,7 +237,7 @@ public class Ekit extends JFrame
 			else if(args[i].equals("-D"))     { debugOn = false; }
 		}
 
-		Ekit ekit = new Ekit(sDocument, sStyleSheet, sRawDocument, urlStyleSheet, includeToolBar, includeViewSource, includeMenuIcons, modeExclusive, sLang, sCtry, base64, debugOn, spellCheck, multibar, enterBreak, appName);
+		Ekitten ekitten = new Ekitten(sDocument, sStyleSheet, sRawDocument, urlStyleSheet, includeToolBar, includeViewSource, includeMenuIcons, modeExclusive, sLang, sCtry, base64, debugOn, spellCheck, multibar, enterBreak, appName);
 	}
 
 }

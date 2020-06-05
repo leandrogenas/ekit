@@ -24,13 +24,13 @@ package space.leandragem.ekitten.action;
 import java.awt.event.ActionEvent;
 import javax.swing.text.StyledEditorKit;
 
-import space.leandragem.ekitten.EkitCore;
+import space.leandragem.ekitten.EkittenCore;
 
 public class AlignAction extends StyledEditorKit.AlignmentAction
 {
-	protected EkitCore parent;
+	protected EkittenCore parent;
 
-	public AlignAction(EkitCore parent, String actionName, int actionType)
+	public AlignAction(EkittenCore parent, String actionName, int actionType)
 	{
 		super(actionName, actionType);
 		this.parent = parent;

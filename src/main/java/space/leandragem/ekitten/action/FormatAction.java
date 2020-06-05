@@ -27,7 +27,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyledEditorKit;
 import javax.swing.text.html.HTML;
 
-import space.leandragem.ekitten.EkitCore;
+import space.leandragem.ekitten.EkittenCore;
 import space.leandragem.ekitten.component.*;
 
 import space.leandragem.util.Translatrix;
@@ -37,10 +37,10 @@ import space.leandragem.util.Translatrix;
  */
 public class FormatAction extends StyledEditorKit.StyledTextAction
 {
-	protected EkitCore parentEkit;
+	protected EkittenCore parentEkit;
 	HTML.Tag htmlTag;
 
-	public FormatAction(EkitCore ekit, String actionName, HTML.Tag inTag)
+	public FormatAction(EkittenCore ekit, String actionName, HTML.Tag inTag)
 	{
 		super(actionName);
 		parentEkit = ekit;

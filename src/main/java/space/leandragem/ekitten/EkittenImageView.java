@@ -55,7 +55,7 @@ import java.util.Dictionary;
  * @see IconView
  * @since 1.4
  */
-public class EkitImageView extends View {
+public class EkittenImageView extends View {
     /**
      * If true, when some of the bits are available a repaint is done.
      * <p>
@@ -143,7 +143,7 @@ public class EkitImageView extends View {
      *
      * @param elem the element to create a view for
      */
-    public EkitImageView(Element elem) {
+    public EkittenImageView(Element elem) {
         super(elem);
         fBounds = new Rectangle();
         imageObserver = new ImageHandler();
@@ -959,7 +959,7 @@ public class EkitImageView extends View {
             // Bail out if there was an error:
             if ((flags & (ABORT|ERROR)) != 0) {
                 repaint(0);
-                synchronized(EkitImageView.this) {
+                synchronized(EkittenImageView.this) {
                     if (image == img) {
                         // Be sure image hasn't changed since we don't
                         // initialy synchronize
@@ -1008,7 +1008,7 @@ public class EkitImageView extends View {
                         newHeight = d.height;
                         changed |= 3;
                 }
-                synchronized(EkitImageView.this) {
+                synchronized(EkittenImageView.this) {
                     if ((changed & 1) == 1 && (state & HEIGHT_FLAG) == 0) {
                         height = newHeight;
                     }

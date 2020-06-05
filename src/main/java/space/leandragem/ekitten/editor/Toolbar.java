@@ -1,6 +1,6 @@
 package space.leandragem.ekitten.editor;
 
-import space.leandragem.ekitten.EkitCore;
+import space.leandragem.ekitten.EkittenCore;
 import space.leandragem.ekitten.component.JButtonNoFocus;
 import space.leandragem.util.Load;
 import space.leandragem.util.Translatrix;
@@ -60,10 +60,10 @@ public class Toolbar {
     public static final int TOOLBAR_FORMAT = 2;
     public static final int TOOLBAR_STYLES = 3;
 
-    protected EkitCore editor;
+    protected EkittenCore editor;
     protected static Hashtable<String, JComponent> htTools = new Hashtable<String, JComponent>();
 
-    public Toolbar(EkitCore core)
+    public Toolbar(EkittenCore core)
     {
         editor = core;
 

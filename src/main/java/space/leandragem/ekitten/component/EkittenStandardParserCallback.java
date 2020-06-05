@@ -9,12 +9,12 @@ import java.util.Set;
   * Custom ParserCallback class by Janko Jochimsen
   */
 
-public class EkitStandardParserCallback extends HTMLEditorKit.ParserCallback
+public class EkittenStandardParserCallback extends HTMLEditorKit.ParserCallback
 {
 	HashMap<String, Integer> theErrors;
 	boolean debug = false;
 	
-	public EkitStandardParserCallback()
+	public EkittenStandardParserCallback()
 	{
 		theErrors = new HashMap<String, Integer>();
 	}

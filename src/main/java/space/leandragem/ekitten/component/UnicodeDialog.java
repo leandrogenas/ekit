@@ -27,7 +27,7 @@ Copyright � 1991-2004 Unicode, Inc. All rights reserved. Distributed under the
 
 package space.leandragem.ekitten.component;
 
-import space.leandragem.ekitten.EkitCore;
+import space.leandragem.ekitten.EkittenCore;
 import space.leandragem.util.Translatrix;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -358,14 +358,14 @@ public class UnicodeDialog extends JDialog implements ActionListener
 	"Supplementary Private Use Area-B"			-> 1048576-1114109
 */
 
-	private EkitCore parentEkit;
+	private EkittenCore parentEkit;
 	private Font buttonFont;
 	private JToggleButton[] buttonArray = new JToggleButton[UNICODEBLOCKSIZE];
 	private ButtonGroup buttonGroup;
 	private JComboBox jcmbBlockSelector;
 	private JComboBox jcmbPageSelector;
 
-	public UnicodeDialog(EkitCore parent, String title, boolean bModal, int index)
+	public UnicodeDialog(EkittenCore parent, String title, boolean bModal, int index)
 	{
 		super(parent.getFrame(), title, bModal);
 		parentEkit = parent;

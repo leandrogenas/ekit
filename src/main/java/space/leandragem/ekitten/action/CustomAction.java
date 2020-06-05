@@ -32,7 +32,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyledEditorKit;
 import javax.swing.text.html.HTML;
 
-import space.leandragem.ekitten.EkitCore;
+import space.leandragem.ekitten.EkittenCore;
 import space.leandragem.ekitten.component.SimpleInfoDialog;
 import space.leandragem.ekitten.component.UserInputAnchorDialog;
 
@@ -42,11 +42,11 @@ import space.leandragem.util.Translatrix;
 */
 public class CustomAction extends StyledEditorKit.StyledTextAction
 {
-	protected EkitCore parentEkit;
+	protected EkittenCore parentEkit;
 	private   HTML.Tag htmlTag;
 	private   Hashtable htmlAttribs;
 
-	public CustomAction(EkitCore ekit, String actionName, HTML.Tag inTag, Hashtable attribs)
+	public CustomAction(EkittenCore ekit, String actionName, HTML.Tag inTag, Hashtable attribs)
 	{
 		super(actionName);
 		parentEkit  = ekit;
@@ -54,7 +54,7 @@ public class CustomAction extends StyledEditorKit.StyledTextAction
 		htmlAttribs = attribs;
 	}
 
-	public CustomAction(EkitCore ekit, String actionName, HTML.Tag inTag)
+	public CustomAction(EkittenCore ekit, String actionName, HTML.Tag inTag)
 	{
 		this(ekit, actionName, inTag, new Hashtable());
 	}
