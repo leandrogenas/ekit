@@ -23,6 +23,8 @@ public class Command {
     public static final String CMD_CLIP_COPY = "textcopy";
     public static final String CMD_CLIP_PASTE = "textpaste";
     public static final String CMD_CLIP_PASTE_PLAIN = "textpasteplain";
+    public static final String CMD_UNDO = "undo";
+    public static final String CMD_REDO = "redo";
     public static final String CMD_TOGGLE_TOOLBAR_SINGLE = "toggletoolbarsingle";
     public static final String CMD_TOGGLE_TOOLBAR_MAIN   = "toggletoolbarmain";
     public static final String CMD_TOGGLE_TOOLBAR_FORMAT = "toggletoolbarformat";
