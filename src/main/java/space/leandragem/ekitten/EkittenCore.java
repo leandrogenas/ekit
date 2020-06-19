@@ -1,23 +1,4 @@
-package space.leandragem.ekitten;/*
-GNU Lesser General Public License
-
-space.leandragem.ekitten.EkitCore - Base Java Swing HTML Editor & Viewer Class (Core)
-Copyright (C) 2000 Howard Kistler
-
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*/
+package space.leandragem.ekitten;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -222,7 +203,7 @@ public class EkittenCore extends JPanel implements ActionListener, KeyListener, 
 	protected static Hashtable<String, JMenu>      htMenus = new Hashtable<String, JMenu>();
 	protected static Hashtable<String, JComponent> htTools = new Hashtable<String, JComponent>();
 
-	private String appName = "Ekitten";
+	private String appName;
 	private final String menuDialog = "..."; /* text to append to a MenuItem label when menu item opens a dialog */
 
 	private final boolean useFormIndicator = true; /* Creates a highlighted background on a new FORM so that it may be more easily edited */
