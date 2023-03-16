@@ -57,16 +57,11 @@ public class UserInputDialog extends JDialog
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we)
 			{
-				jOptionPane.setValue(new Integer(JOptionPane.CLOSED_OPTION));
+				jOptionPane.setValue(JOptionPane.CLOSED_OPTION);
 			}
 		});
 
-		jtxfInput.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				jOptionPane.setValue(buttonLabels[0]);
-			}
-		});
+		jtxfInput.addActionListener(e -> jOptionPane.setValue(buttonLabels[0]));
 
 		jOptionPane.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent e)
